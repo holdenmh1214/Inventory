@@ -7,7 +7,6 @@ public class InvItem {
 
     public InvItem (String text){
         this.name = text;
-        this.qty=0;
     }
 
     public InvItem (String name, int qty){
