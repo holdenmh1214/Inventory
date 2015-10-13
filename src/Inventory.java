@@ -5,6 +5,25 @@ import java.util.Scanner;
  * Created by holdenhughes on 10/12/15.
  */
 public class Inventory {
+
+    static InvItem createItem(String category){
+        if (category.equals("Hardware")) {
+            return new Hardware();
+        } else if (category.equals("Lumber")) {
+            return new Lumber();
+        } else if (category.equals("Tools")) {
+            return new Tools();
+        } else if (category.equals("Plumbing")) {
+            return new Plumbing();
+        } else if (category.equals("Electrical")) {
+            return new Electrical();
+        } else {
+            System.out.println("Invalid category");
+            return new InvItem();
+        }
+
+    }
+
     public static void main(String[] args) {
         ArrayList<InvItem> items = new ArrayList();
         Scanner scanner = new Scanner(System.in);
@@ -14,7 +33,7 @@ public class Inventory {
             int itemNum = 1;
             for (InvItem item : items) {
 
-                System.out.println(itemNum + " [" + item.qty + "] " + item.name);
+                System.out.println(String.format("%d , %s , %d , %s", itemNum , item.name , item.qty , item.category));
                 itemNum++;
             }
 
@@ -33,7 +52,11 @@ public class Inventory {
                 System.out.println("Type a qty");
                 String itemQty = scanner.nextLine();
                 int itemq = Integer.valueOf(itemQty);
-                InvItem item = new InvItem(itemName, itemq);
+                System.out.println("Type category");
+                String category = scanner.nextLine();
+                InvItem item = createItem(category);
+                item.name = itemName;
+                item.qty = itemq;
                 items.add(item);
 
             }else if(optionNum ==2) {

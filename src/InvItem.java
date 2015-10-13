@@ -4,9 +4,17 @@
 public class InvItem {
     String name;
     int qty;
+    String category;
 
-    public InvItem (String name, int qty){
-        this.name = name;
-        this.qty=qty;
+    public InvItem(){
+        
     }
+
+    public InvItem(String name, int qty, String category){
+        this.name=name;
+        this.qty=0;
+        this.category=category;
+    }
+
 }
+
