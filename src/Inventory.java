@@ -44,6 +44,7 @@ public class Inventory {
             System.out.println("[1] Add Item");
             System.out.println("[2] Remove Item");
             System.out.println("[3] Adjust Quantity");
+            System.out.println("[4] Exit System;");
 
             String option = scanner.nextLine();
             int optionNum = Integer.valueOf(option);
@@ -83,6 +84,10 @@ public class Inventory {
                 String newQty = scanner.nextLine();
                 int newQ = Integer.valueOf(newQty);
                 item.qty = newQ;
+
+            } else if(optionNum == 4) {
+                System.out.println("Exiting system");
+                System.exit(0);
             }
         }
     }
