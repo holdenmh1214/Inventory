@@ -19,7 +19,9 @@ public class Inventory {
             return new Electrical();
         } else {
             System.out.println("Invalid category");
-            return new InvItem();
+            System.out.println("Exiting system");
+            System.exit(0);
+            return null;
         }
 
     }
@@ -33,12 +35,12 @@ public class Inventory {
             int itemNum = 1;
             for (InvItem item : items) {
 
-                System.out.println(String.format("%d , %s , %d , %s", itemNum , item.name , item.qty , item.category));
+                System.out.println(String.format("[%d] %s (%d) %s", itemNum , item.name , item.qty , item.category));
                 itemNum++;
             }
 
 
-            System.out.println("Options");
+            System.out.println("Options"); //Selection choices
             System.out.println("[1] Add Item");
             System.out.println("[2] Remove Item");
             System.out.println("[3] Adjust Quantity");
@@ -46,17 +48,22 @@ public class Inventory {
             String option = scanner.nextLine();
             int optionNum = Integer.valueOf(option);
 
-            if (optionNum == 1) {
+            if (optionNum >3 || optionNum<1) { //Checking to confirm user input correct option
+                System.out.println("Invalid option");
+                System.out.println("Exiting system");
+                System.exit(0);
+
+            } else if (optionNum == 1) {
                 System.out.println("Type item name");
-                String itemName = scanner.nextLine();
+                String itemName = scanner.nextLine(); //Item name is filled
                 System.out.println("Type a qty");
                 String itemQty = scanner.nextLine();
-                int itemq = Integer.valueOf(itemQty);
+                int itemq = Integer.valueOf(itemQty);//Qty is filled
                 System.out.println("Type category");
                 String category = scanner.nextLine();
-                InvItem item = createItem(category);
-                item.name = itemName;
-                item.qty = itemq;
+                InvItem item = createItem(category); //calling method to populate category, also checks for valid category
+                item.name = itemName; //populating field with name
+                item.qty = itemq; //populating field with qty
                 items.add(item);
 
             }else if(optionNum ==2) {

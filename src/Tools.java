@@ -3,7 +3,6 @@
  */
 public class Tools extends InvItem {
 
-    public Tools() {
-        category = "Tools";
+    public Tools() {category = "Tools";
     }
 }

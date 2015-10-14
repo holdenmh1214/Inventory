@@ -10,11 +10,5 @@ public class InvItem {
         
     }
 
-    public InvItem(String name, int qty, String category){
-        this.name=name;
-        this.qty=0;
-        this.category=category;
-    }
-
 }
 
